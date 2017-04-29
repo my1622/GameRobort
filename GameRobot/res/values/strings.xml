@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GameRobot</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="strWarnng1">抵制不良游戏，拒绝盗版游戏。</string>
+    <string name="strWarnng2">注意自我保护，谨防上当受骗。</string>
+    <string name="strWarnng3">适度游戏益脑，沉迷游戏伤身。</string>
+    <string name="strWarnng4">合理安排时间，享受健康生活。</string>
+
+</resources>
