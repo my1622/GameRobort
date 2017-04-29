@@ -3,9 +3,11 @@ package com.mysample.gamerobot.state;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -25,10 +27,9 @@ public class PlayState extends State {
 	private ArrayList<BackGround> backGrounds;
 	private long beforeAction_dwon = 1000000000000000l;;
 	private int height;
-	
 
 	private ArrayList<Block> blocks;
-	private int highScore=0;
+	private int highScore = 0;
 
 	@Override
 	public void init(int width, int height) {
@@ -67,17 +68,16 @@ public class PlayState extends State {
 			if (Robort.getINIT_LIFE() > 0) {
 				Robort.setINIT_LIFE(Robort.getINIT_LIFE() - 1);
 			}
-			setCurrentState(new HighScoreState(highScore/10), MainActivity.GAME_WIDTH,
-					MainActivity.GAME_HEIGHT);
+			setCurrentState(new HighScoreState(highScore / 10),
+					MainActivity.GAME_WIDTH, MainActivity.GAME_HEIGHT);
 
 		} else {
-			
+
 			Assets.runAnimation.updata(delta);
 
 			cloud1.update(delta);
 			// cloud2.update(delta);
 			uddateBackgournd(delta);
-			
 
 			robort.updata(delta, height, blocks);
 			updateBlocks(delta);
@@ -118,13 +118,26 @@ public class PlayState extends State {
 
 		// g.drawImage(Assets.grass, 0, 405);
 		renderScore(g);
+		if (highScore==0){
+			renderHit(g);
+			
+			
+		}
 
+	}
+
+	private void renderHit(Painter g) {
+		g.setColor(Color.BLACK);
+		g.setAlpha(30);
+		g.fillRect(0, 0, MainActivity.GAME_WIDTH, MainActivity.GAME_HEIGHT);
+		
 	}
 
 	private void renderScore(Painter g) {
 		g.setFont(Typeface.SANS_SERIF, 25);
 		g.setColor(Color.GRAY);
-		g.drawString("Score:" + highScore / 10, MainActivity.GAME_WIDTH-100, 30);
+		g.drawString("Score:" + highScore / 10, MainActivity.GAME_WIDTH - 100,
+				30);
 	}
 
 	private void rederBackgrounds(Painter g) {
