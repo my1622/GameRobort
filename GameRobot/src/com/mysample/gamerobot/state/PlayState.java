@@ -104,7 +104,7 @@ public class PlayState extends State {
 			 */
 		}
 
-	}
+	} 
 
 	@Override
 	public void render(Painter g) {
@@ -124,7 +124,7 @@ public class PlayState extends State {
 			
 		}
 
-	}
+	}  
 
 	private void renderHit(Painter g) {
 		g.setColor(Color.BLACK);
