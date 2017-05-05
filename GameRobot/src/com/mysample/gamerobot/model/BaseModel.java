@@ -3,6 +3,10 @@ package com.mysample.gamerobot.model;
 import android.graphics.Rect;
 
 public class BaseModel {
+	public BaseModel() {
+		
+		rect = new Rect();
+	}
 	private float x, y;
 	private int width, height, velY, velX;
 
@@ -74,7 +78,7 @@ public class BaseModel {
 	public void update(float delta) {
 		updateRects();
 	}
-	private void updateRects() {
+	public void updateRects() {
 		rect.set((int) x, (int) y, (int) x + width, (int) y + height);
 
 	}

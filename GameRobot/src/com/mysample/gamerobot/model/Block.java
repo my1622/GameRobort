@@ -69,9 +69,9 @@ public class Block {
 			x += speed * delta;
 		} else {
 			Random r = new Random();
-			y = r.nextInt(160) + 270;
+			//y = r.nextInt(160) + 270;
 
-			x = 800;
+			x = width-30;
 		}
 		updateRects();
 	}

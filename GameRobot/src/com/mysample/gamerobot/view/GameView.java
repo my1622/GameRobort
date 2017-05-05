@@ -22,6 +22,7 @@ import com.mysample.gamerobot.util.InputHandler;
 import com.mysample.gamerobot.util.Painter;
 
 public class GameView extends SurfaceView implements Runnable {
+	public static final int FPS=60;
 
 	private Bitmap gameImage;
 	private Rect gameImageSrc;
@@ -130,7 +131,7 @@ public class GameView extends SurfaceView implements Runnable {
 	}
 
 	@Override
-	public void run() {
+	public synchronized void run() {
 		long updateDurationMillis = 0;
 		long sleepDurationMillis = 0;
 		while (running && Assets.isReady) {
@@ -152,7 +153,9 @@ public class GameView extends SurfaceView implements Runnable {
 			}*/
 			updateDurationMillis = (System.nanoTime() - beforeUpdateRender) / 1000000L;
 			//Log.d("APP.TAG","updateDurationMillis:"+updateDurationMillis+"");
-			sleepDurationMillis = Math.max(20, 17 - updateDurationMillis);
+			
+			Log.d("GameView.tag","updateDurationMillis:"+updateDurationMillis);
+			sleepDurationMillis = Math.max(2, (int)(1000/FPS) - updateDurationMillis);
 			try {
 				Thread.sleep(sleepDurationMillis);
 			} catch (Exception e) {

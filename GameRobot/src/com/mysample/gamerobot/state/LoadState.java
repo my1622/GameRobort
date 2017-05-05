@@ -18,8 +18,8 @@ public class LoadState extends State {
 
 	@Override
 	public void init(int width, int heigth) {
-		this.width = width;
-		this.height = heigth;
+		this.width = MainActivity.GAME_WIDTH;
+		this.height = MainActivity.GAME_HEIGHT;
 		Assets.load();
 
 	}
@@ -29,7 +29,7 @@ public class LoadState extends State {
 		// TODO Auto-generated method stub
 		bata -= 15;
 		alpha = 255 - Math.abs(bata);
-		Log.d("Tag.app", "alpha" + alpha);
+//		Log.d("Tag.app", "alpha" + alpha);
 
 		if (Assets.isReady && alpha <= 0) {
 			setCurrentState(new MenuState(), MainActivity.GAME_WIDTH, MainActivity.GAME_HEIGHT);
@@ -39,7 +39,6 @@ public class LoadState extends State {
 
 	@Override
 	public void render(Painter g) {
-		// TODO Auto-generated method stub
 
 		rederBackgrounds(g);
 	}
@@ -55,13 +54,13 @@ public class LoadState extends State {
 		if (alpha!=0) {
 			g.setFont(Assets.font, 40);
 			g.drawString(MainActivity.resources.getString(R.string.strWarnng1),
-					height / 2 - 250, 150);
+					height / 2 - 130, 150);
 			g.drawString(MainActivity.resources.getString(R.string.strWarnng2),
-					height / 2 - 250, 200);
+					height / 2 - 130, 200);
 			g.drawString(MainActivity.resources.getString(R.string.strWarnng3),
-					height / 2 - 250, 250);
+					height / 2 -130, 250);
 			g.drawString(MainActivity.resources.getString(R.string.strWarnng4),
-					height / 2 - 250, 300);
+					height / 2 - 130, 300);
 		}
 
 	}

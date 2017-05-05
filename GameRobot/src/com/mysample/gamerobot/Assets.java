@@ -2,6 +2,7 @@ package com.mysample.gamerobot;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -16,13 +17,14 @@ import com.mysample.gamerobot.animation.Frame;
 
 public class Assets {
 	private static SoundPool soundPool;
-	public static int onJumpID;
+	public static int onJumpID,DEADID;
 	public static boolean isReady = false;
 	
 	public static Typeface font;
 
-	public static Bitmap Robort, grass, jump,cloud,block,bg,background;
+	public static Bitmap Robort, grass, jump,cloud,glass,bg,background,hand,diren,enemy;
 	private static Bitmap[] bitmapRobort = new Bitmap[12];
+	public static ArrayList<Bitmap> enemys;
 	private static Frame[] frames = new Frame[12];
 	public static Animation runAnimation;
 
@@ -39,13 +41,24 @@ public class Assets {
 		 * for (int i = 0; i < bitmapRobort.length; i++) {
 		 * bitmapRobort[i]=loadBitmap("robort.png",true); }
 		 */
+		enemys=new ArrayList<Bitmap>();
 		grass = loadBitmap("grass.png", true);
 		Robort = loadBitmap("robort.png", true);
 		jump = loadBitmap("jump.png", true);
 		cloud= loadBitmap("cloud1.png", true);
-		block=loadBitmap("block.png", true);
+		glass=loadBitmap("plantmodify.png", true);
 		bg=loadBitmap("bg.png", true);
 		background=loadBitmap("background.png", true);
+		hand=loadBitmap("hand.png", true);
+		diren=loadBitmap("enemy.png", true);
+		enemys.add(loadBitmap("enemy.png", true));
+		enemys.add(loadBitmap("enemy1.png", true));
+		enemys.add(loadBitmap("enemy2.png", true));
+		enemys.add(loadBitmap("enemy3.png", true));
+		enemys.add(loadBitmap("enemy4.png", true));
+		enemys.add(loadBitmap("enemy5.png", true));
+		enemys.add(loadBitmap("enemy6.png", true));
+		
 		
 
 		int frameW = Robort.getWidth() / 6; // 每帧的高
@@ -66,6 +79,7 @@ public class Assets {
 		font = Typeface.createFromAsset(MainActivity.assetManager,
 				"fonts/font2.ttf");
 		onJumpID = loadSound("onjump.wav");
+		DEADID= loadSound("dead.mp3");
 		isReady = true;
 	}
 

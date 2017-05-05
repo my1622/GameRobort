@@ -59,6 +59,19 @@ public class Painter {
 
 		canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
 	}
+	
+	public void drawImage(Bitmap bitmap, int x, int y, int width, int height,
+			int alpha) {
+		paint.setAlpha(alpha);
+		
+
+		srcRect.set(0, 0, bitmap.getWidth(), bitmap.getHeight());
+		dstRect.set(x, y, x + width, y + height);
+	
+
+		canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
+		paint.setAlpha(255);
+	}
 
 	public void drawImage(Bitmap bitmap, int x, int y, int width, int height,
 			float degree) {
